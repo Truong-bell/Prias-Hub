@@ -3,11 +3,10 @@
 -- Owner: @ngu_auuu10 | Channel: @Hiadiz
 -- ============================================================
 
-local Config = require(script.Parent.Config)
+local Config = _G.Config
 local HttpService = game:GetService("HttpService")
 
 local Languages = {}
-
 local BASE_URL = "https://raw.githubusercontent.com/Truong-bell/Prias-Hub/main/languages/"
 
 local function loadLanguage(lang)
@@ -19,7 +18,7 @@ local function loadLanguage(lang)
         Languages[lang] = data
         return true
     else
-        warn("Failed to load language: " .. lang)
+        warn("⚠️ Failed to load language: " .. lang)
         return false
     end
 end
@@ -29,9 +28,7 @@ loadLanguage("en")
 
 local function T(key)
     local langData = Languages[Config.Language] or Languages["vi"]
-    if not langData then
-        return key
-    end
+    if not langData then return key end
     return langData[key] or key
 end
 
