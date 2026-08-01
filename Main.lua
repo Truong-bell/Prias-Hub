@@ -1,9 +1,8 @@
 -- ============================================================
--- PRIAS HUB – Main Entry
+-- PRIAS HUB – Main Module
 -- Owner: @ngu_auuu10 | Channel: @Hiadiz
 -- ============================================================
 
--- Load modules (all in same directory)
 local Config = require(script.Parent.Config)
 local T = require(script.Parent.Language)
 local CombosData = require(script.Parent.Combos)
@@ -32,16 +31,13 @@ Window:CreateLabel(homeTab, "▲ Movement | ✦ Misc")
 -- ===== COMBAT TAB =====
 local combatTab = Window:GetTab("combat")
 
--- Character dropdown
 Window:CreateDropdown(combatTab, T("select_char"), "SelectedChar", CombosData.characters, function(val)
     print("Selected character:", val)
 end)
 
--- Custom combo dropdown
 local customCombos = {"M1-1-2-3","1-M1-3-M1-M1-2","M1-2-3-M1-1","2-3-M1-1-4","3M1-2-3-3M1-4","3M1-Uppercut-4M1-Beatdown"}
 Window:CreateDropdown(combatTab, T("custom_combo"), "CustomCombo", customCombos)
 
--- Toggles
 Window:CreateToggle(combatTab, T("auto_kill"), "AutoKill")
 Window:CreateToggle(combatTab, "Auto Combo", "AutoCombo")
 Window:CreateToggle(combatTab, T("silent_aim"), "SilentAim")
@@ -148,13 +144,13 @@ loadBtn.MouseButton1Click:Connect(function()
     Misc:LoadConfig()
 end)
 
--- ===== START ALL MODULES =====
+-- ===== START MODULES =====
 Combat:Start()
 Visual:Start()
 Movement:Start()
 Misc:StartAutoRespawn()
 
--- Anti-AFK
+-- ===== ANTI-AFK =====
 task.spawn(function()
     while true do
         task.wait(60)
