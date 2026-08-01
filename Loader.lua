@@ -27,6 +27,7 @@ local function loadModule(name)
         return loadstring(game:HttpGet(url))()
     end)
     if success and result then
+        _G[name] = result
         loaded[name] = result
         print("✅ Loaded: " .. name)
     else
