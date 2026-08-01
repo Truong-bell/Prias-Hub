@@ -3,14 +3,14 @@
 -- Owner: @ngu_auuu10 | Channel: @Hiadiz
 -- ============================================================
 
-local Config = require(script.Parent.Config)
-local T = require(script.Parent.Language)
-local CombosData = require(script.Parent.Combos)
-local PriasUI = require(script.Parent.UI)
-local Combat = require(script.Parent.Combat)
-local Visual = require(script.Parent.Visual)
-local Movement = require(script.Parent.Movement)
-local Misc = require(script.Parent.Misc)
+local Config = _G.Config
+local T = _G.Language
+local CombosData = _G.Combos
+local PriasUI = _G.UI
+local Combat = _G.Combat
+local Visual = _G.Visual
+local Movement = _G.Movement
+local Misc = _G.Misc
 
 -- ===== CREATE WINDOW =====
 local Window = PriasUI:CreateWindow({
