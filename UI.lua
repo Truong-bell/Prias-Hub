@@ -6,8 +6,8 @@
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
-local Config = require(script.Parent.Config)
-local T = require(script.Parent.Language)
+local Config = _G.Config
+local T = _G.Language
 
 local PriasUI = {}
 PriasUI.__index = PriasUI
@@ -33,7 +33,6 @@ function PriasUI:CreateWindow(opts)
     mainCorner.CornerRadius = UDim.new(0, 12)
     mainCorner.Parent = main
     
-    -- Shadow
     local shadow = Instance.new("Frame")
     shadow.Size = UDim2.new(1, 10, 1, 10)
     shadow.Position = UDim2.new(0, -5, 0, -5)
@@ -45,7 +44,6 @@ function PriasUI:CreateWindow(opts)
     shadowCorner.CornerRadius = UDim.new(0, 16)
     shadowCorner.Parent = shadow
     
-    -- Header
     local header = Instance.new("Frame")
     header.Size = UDim2.new(1, 0, 0, 38)
     header.BackgroundColor3 = Color3.fromRGB(25,25,35)
@@ -66,7 +64,6 @@ function PriasUI:CreateWindow(opts)
     title.TextXAlignment = Enum.TextXAlignment.Left
     title.Parent = header
     
-    -- Buttons
     local minBtn = Instance.new("TextButton")
     minBtn.Size = UDim2.new(0,28,0,28)
     minBtn.Position = UDim2.new(1,-68,0,5)
@@ -93,7 +90,6 @@ function PriasUI:CreateWindow(opts)
     closeCorner.CornerRadius = UDim.new(0,6)
     closeCorner.Parent = closeBtn
     
-    -- Popup mini
     local popup = Instance.new("TextButton")
     popup.Size = UDim2.new(0,48,0,48)
     popup.Position = UDim2.new(0.9,-24,0.9,-24)
@@ -121,7 +117,6 @@ function PriasUI:CreateWindow(opts)
         Window._destroyed = true
     end)
     
-    -- Drag
     local dragMain = false
     local dragStart, startPos
     main.InputBegan:Connect(function(input)
@@ -143,7 +138,6 @@ function PriasUI:CreateWindow(opts)
         end
     end)
     
-    -- Content
     local content = Instance.new("ScrollingFrame")
     content.Size = UDim2.new(1,-12,1,-100)
     content.Position = UDim2.new(0,6,0,44)
@@ -160,7 +154,6 @@ function PriasUI:CreateWindow(opts)
     contentLayout.SortOrder = Enum.SortOrder.LayoutOrder
     contentLayout.Parent = content
     
-    -- Tab bar
     local tabBar = Instance.new("Frame")
     tabBar.Size = UDim2.new(1,-12,0,36)
     tabBar.Position = UDim2.new(0,6,1,-42)
@@ -226,7 +219,6 @@ function PriasUI:CreateWindow(opts)
         Window._destroyed = true
     end
     
-    -- Helpers
     function Window:CreateToggle(parent, label, configKey, callback)
         local row = Instance.new("Frame")
         row.Size = UDim2.new(1,0,0,32)
